@@ -4,20 +4,25 @@ public class Flight {
     private ArrayList<Passenger> passengers;
     private Plane plane;
     private String flightNumber;
-    private Destination destination;
     private Departure departure;
+    private Destination destination;
     private String departureTime;
 
-    public Flight(Plane plane, String flightNumber, Destination destination, Departure departure, String departureTime) {
+    public Flight(Plane plane, String flightNumber, Departure departure, Destination destination, String departureTime) {
         this.plane = plane;
         this.flightNumber = flightNumber;
         this.destination = destination;
         this.departure = departure;
         this.departureTime = departureTime;
+        this.passengers = new ArrayList<Passenger>();
     }
 
     public ArrayList<Passenger> getPassengers() {
         return passengers;
+    }
+
+    public int passengerCount() {
+        return passengers.size();
     }
 
     public Plane getPlane() {
@@ -41,7 +46,7 @@ public class Flight {
     }
 
     public void addPassenger(Passenger passenger) {
-        passengers.add(passenger);
+        this.passengers.add(passenger);
     }
 
     public int getAvailableSeats() {
@@ -49,11 +54,8 @@ public class Flight {
     }
 
     public void bookPassenger(Passenger passenger) {
-        if (plane.planeType.getCapacity() > passengers.size()) {
+        if (plane.planeType.getCapacity() > passengerCount()) {
             addPassenger(passenger);
-            System.out.println("Passenger added");
-        } else {
-            System.out.println("Flight is full");
         }
     }
 

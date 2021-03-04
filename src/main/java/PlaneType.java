@@ -1,7 +1,8 @@
 public enum PlaneType {
     LARGEPLANE(300, 20),
     MEDIUMPLANE(200, 15),
-    SMALLPLANE(100, 10);
+    SMALLPLANE(100, 10),
+    PRIVATEJET(2, 2);
 
     private final int capacity;
     private final int weight;
